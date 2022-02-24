@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import UserForm from "./userForm"
 
 function ModifUser({ url, handleModifClick }) {
 	let { id } = useParams();
@@ -16,7 +17,9 @@ function ModifUser({ url, handleModifClick }) {
 		});
 	}, []);
 
-	return <div>heelo</div>;
+	return <div>
+        <UserForm user={user} handleSubmit={handleModifClick}/>	
+	</div>;
 }
 
 export default ModifUser;

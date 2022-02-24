@@ -1,13 +1,17 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 
 const UserForm = (props) => {
 	const [user, setuser] = useState({
-		name: props.user ? props.user.name : "",
-		email: props.user ? props.user.email : "",
-		password: props.user ? props.user.password : "",
+		name:"",
+		email:"",
+		password:""
 	});
+    
+	useEffect(() => {
+		setuser(props.user);
+	}, [props.user])
 
 	const [errorMsg, setErrorMsg] = useState("");
 	const { name, email, password } = user;
@@ -16,14 +20,14 @@ const UserForm = (props) => {
 		event.preventDefault();
 		const values = [name, email, password];
 		let errorMsg = "";
-
+      console.log(user)
 		const allFieldsFilled = values.every((field) => {
 			const value = `${field}`.trim();
 			return value !== "" && value !== "0";
 		});
 
 		if (allFieldsFilled) {
-			props.handleCreate(user, event);
+			props.handleSubmit(user, event);
 		} else {
 			errorMsg = "Please fill out all the fields.";
 		}
@@ -55,7 +59,7 @@ const UserForm = (props) => {
 						className="input-control"
 						type="text"
 						name="name"
-						defaultValue={name}
+						defaultValue={props.user.name }
 						onChange={handleInputChange}
 						placeholder="Enter name of user"
 					/>
@@ -66,7 +70,7 @@ const UserForm = (props) => {
 						className="input-control"
 						type="text"
 						name="email"
-						defaultValue={email}
+						defaultValue={props.user.email }
 						onChange={handleInputChange}
 						placeholder="Enter email of user"
 					/>
@@ -78,7 +82,7 @@ const UserForm = (props) => {
 						className="input-control"
 						type="text"
 						name="password"
-						defaultValue={password}
+						defaultValue={props.user.password }
 						onChange={handleInputChange}
 						placeholder="Enter password of user"
 					/>

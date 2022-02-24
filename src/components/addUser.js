@@ -6,7 +6,7 @@ function AddUser({ handleCreate }) {
 		<div>
 			<h1>Add new Member</h1>
 			<React.Fragment>
-				<UserForm handleCreate={handleCreate} />
+				<UserForm handleSubmit={handleCreate} />
 			</React.Fragment>
 		</div>
 	);

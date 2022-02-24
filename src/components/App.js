@@ -43,14 +43,14 @@ function App() {
 			});
 	};
 
-	const handleModifClick = (event, user, id) => {
+	const handleModifClick = (user,event) => {
 		event.preventDefault();
-		axios.put(`${baseUrl}/${id}`, user).then((response) => {
+		axios.put(`${baseUrl}/${user._id}`, user).then((response) => {
 			console.log(response);
 		});
 
 		console.log(baseUrl);
-		console.log(id);
+		let id = user._id;
 
 		let updatedUser = users.filter((user) => user._id === id);
 
