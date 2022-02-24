@@ -1,4 +1,6 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";uto-merging src/components/modifUser.js
+
+i
 import { useEffect,useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 
@@ -8,10 +10,12 @@ const UserForm = (props) => {
 		email:"",
 		password:""
 	});
+
     
 	useEffect(() => {
 		setuser(props.user);
 	}, [props.user])
+
 
 	const [errorMsg, setErrorMsg] = useState("");
 	const { name, email, password } = user;
@@ -59,7 +63,8 @@ const UserForm = (props) => {
 						className="input-control"
 						type="text"
 						name="name"
-						defaultValue={props.user.name }
+						defaultValue={props.user ? props.user.name : ""}
+
 						onChange={handleInputChange}
 						placeholder="Enter name of user"
 					/>
@@ -71,6 +76,7 @@ const UserForm = (props) => {
 						type="text"
 						name="email"
 						defaultValue={props.user.email }
+
 						onChange={handleInputChange}
 						placeholder="Enter email of user"
 					/>

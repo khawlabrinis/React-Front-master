@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import UserForm from "./userForm"
+import UserForm from "./userForm";
+
 
 function ModifUser({ url, handleModifClick }) {
 	let { id } = useParams();
@@ -16,6 +17,7 @@ function ModifUser({ url, handleModifClick }) {
 			setUser(response.data);
 		});
 	}, []);
+
 
 	return <div>
         <UserForm user={user} handleSubmit={handleModifClick}/>	
